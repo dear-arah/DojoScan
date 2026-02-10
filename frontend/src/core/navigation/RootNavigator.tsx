@@ -3,7 +3,7 @@ import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import { RootStackParamList } from './types';
 import { AuthNavigator } from './AuthNavigator';
 import { MainTabNavigator } from './MainTabNavigator';
-import { useAuthStore } from '@core/state/authStore';
+import { useAuthStore } from '../state/authStore';
 
 const Stack = createNativeStackNavigator<RootStackParamList>();
 
