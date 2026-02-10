@@ -1,9 +1,9 @@
 import React from 'react';
-import { View, Text, StyleSheet } from 'react-native';
+import { Text, StyleSheet } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { Ionicons } from '@expo/vector-icons';
-import { useTheme } from '@shared/hooks/useTheme';
-import { typography, spacing } from '@shared/constants/theme';
+import { useTheme } from '../../../shared/hooks/useTheme';
+import { typography, spacing } from '../../../shared/constants/theme';
 
 export function ScanPlaceholderScreen() {
   const { colors } = useTheme();

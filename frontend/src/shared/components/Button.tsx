@@ -1,14 +1,10 @@
 import React from 'react';
 import {
-  TouchableOpacity,
-  Text,
-  StyleSheet,
-  ActivityIndicator,
-  ViewStyle,
-  TextStyle,
+  TouchableOpacity, Text, StyleSheet, ActivityIndicator,
+  ViewStyle, TextStyle,
 } from 'react-native';
-import { colors, spacing, borderRadius, sizes, typography } from '@shared/constants/theme';
-import { useTheme } from '@shared/hooks/useTheme';
+import { colors, spacing, borderRadius, sizes, typography } from '../constants/theme';
+import { useTheme } from '../hooks/useTheme';
 
 type ButtonVariant = 'primary' | 'secondary' | 'outline' | 'ghost';
 
@@ -24,14 +20,8 @@ interface ButtonProps {
 }
 
 export function Button({
-  title,
-  onPress,
-  variant = 'primary',
-  disabled = false,
-  loading = false,
-  style,
-  textStyle,
-  fullWidth = false,
+  title, onPress, variant = 'primary', disabled = false,
+  loading = false, style, textStyle, fullWidth = false,
 }: ButtonProps) {
   const { colors: themeColors } = useTheme();
   const isDisabled = disabled || loading;
@@ -41,11 +31,7 @@ export function Button({
     fullWidth && styles.fullWidth,
     variant === 'primary' && { backgroundColor: themeColors.primary },
     variant === 'secondary' && { backgroundColor: themeColors.secondary },
-    variant === 'outline' && {
-      backgroundColor: 'transparent',
-      borderWidth: 1.5,
-      borderColor: themeColors.primary,
-    },
+    variant === 'outline' && { backgroundColor: 'transparent', borderWidth: 1.5, borderColor: themeColors.primary },
     variant === 'ghost' && { backgroundColor: 'transparent' },
     isDisabled && styles.disabled,
     style,
@@ -62,18 +48,12 @@ export function Button({
 
   return (
     <TouchableOpacity
-      onPress={onPress}
-      disabled={isDisabled}
-      activeOpacity={0.7}
-      style={containerStyles}
-      accessibilityRole="button"
-      accessibilityLabel={title}
-      accessibilityState={{ disabled: isDisabled }}
+      onPress={onPress} disabled={isDisabled} activeOpacity={0.7}
+      style={containerStyles} accessibilityRole="button"
+      accessibilityLabel={title} accessibilityState={{ disabled: isDisabled }}
     >
       {loading ? (
-        <ActivityIndicator
-          color={variant === 'outline' || variant === 'ghost' ? themeColors.primary : colors.white}
-        />
+        <ActivityIndicator color={variant === 'outline' || variant === 'ghost' ? themeColors.primary : colors.white} />
       ) : (
         <Text style={labelStyles}>{title}</Text>
       )}
@@ -83,23 +63,12 @@ export function Button({
 
 const styles = StyleSheet.create({
   base: {
-    height: sizes.buttonHeight,
-    borderRadius: borderRadius.md,
-    alignItems: 'center',
-    justifyContent: 'center',
-    paddingHorizontal: spacing.lg,
-    minWidth: sizes.touchTarget,
+    height: sizes.buttonHeight, borderRadius: borderRadius.md,
+    alignItems: 'center', justifyContent: 'center',
+    paddingHorizontal: spacing.lg, minWidth: sizes.touchTarget,
   },
-  fullWidth: {
-    width: '100%',
-  },
-  disabled: {
-    opacity: 0.5,
-  },
-  label: {
-    ...typography.button,
-  },
-  labelDisabled: {
-    opacity: 0.7,
-  },
+  fullWidth: { width: '100%' },
+  disabled: { opacity: 0.5 },
+  label: { ...typography.button },
+  labelDisabled: { opacity: 0.7 },
 });
